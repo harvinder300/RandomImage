@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-
+import {
+    FacebookShareButton,
+    WhatsappShareButton,
+    FacebookIcon
+} from "react-share";
 function RandomImage() {
     const [imageUrl, setImageUrl] = useState('');
 
@@ -16,15 +20,16 @@ function RandomImage() {
                 'Accept': 'image/jpg'
             }
         })
-        .then(response => response.blob())
-        .then(blob => {
-            setImageUrl(URL.createObjectURL(blob));
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
+            .then(response => response.blob())
+            .then(blob => {
+                setImageUrl(URL.createObjectURL(blob));
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
     };
 
+    const shareUrl=imageUrl;
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh' }}>
             <h1>Random Image Generator</h1>
@@ -36,6 +41,9 @@ function RandomImage() {
                 </Card>
             }
             <Button variant="primary" style={{ marginTop: '20px' }} onClick={fetchRandomImage}>Generate</Button>
+            <FacebookShareButton url={shareUrl}>
+            <FacebookIcon size={40} round={true} style={{ marginTop: '10px' }} />
+            </FacebookShareButton>
         </div>
     );
 }
