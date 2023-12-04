@@ -1,0 +1,23 @@
+#box {
+
+    height: 350px;
+    width: 300px;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Salta-VallesCalchaquies-P3140151.JPG/800px-Salta-VallesCalchaquies-P3140151.JPG);
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+h1 {
+    width: 100%;
+    padding: 100px;
+    font-size: 35px;
+    font-weight:700;
+    text-transform: uppercase;
+    font-weight: 900;
+    background-color: rgba(255, 255, 255, 0.411);
+    backdrop-filter: blur(5px);
+}
