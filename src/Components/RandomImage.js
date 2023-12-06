@@ -55,11 +55,25 @@ function RandomImage() {
                 <div className="skeleton-loader" style={{ width: '18rem', height: '250px', backgroundColor: '#ddd', borderRadius: '12px', marginBottom: '20px' }}></div>
             ) : (
                 imageUrl && (
-                    <Card className="shadow-lg mb-5 bg-black rounded-3" style={{ width: '18rem', marginTop: '20px', boxShadow: '0 8px 16px 0 rgba(0,0,0,0.4)' }}>
-                        <Card.Body style={{ display: 'flex', justifyContent: 'center', borderRadius: '12px' }}>
-                            <img src={imageUrl} alt="Random Image" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: '12px' }} />
+                    <Card className="shadow-lg mb-5 bg-black rounded-3" style={{ width: '18rem', marginTop: '20px', boxShadow: '0 8px 16px 0 rgba(0,0,0,0.4)', overflow: 'hidden' }}>
+                        <Card.Body style={{ display: 'flex', justifyContent: 'center', borderRadius: '12px', transition: 'transform 0.3s ease-in-out' }}>
+                            <img
+                                src={imageUrl}
+                                alt="Random Image"
+                                style={{
+                                    maxWidth: '100%',
+                                    maxHeight: '100%',
+                                    objectFit: 'contain',
+                                    borderRadius: '12px',
+                                    transition: 'transform 0.3s ease-in-out',
+                                    transform: 'scale(1)', /* Initial state */
+                                }}
+                                onMouseOver={(e) => { e.target.style.transform = 'scale(1.1)'; }} /* Scale up on hover */
+                                onMouseOut={(e) => { e.target.style.transform = 'scale(1)'; }} /* Scale back to normal on mouse out */
+                            />
                         </Card.Body>
                     </Card>
+
                 )
             )}
             <div style={{ display: 'flex', marginTop: '20px' }}>
